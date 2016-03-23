@@ -171,5 +171,6 @@
     <orderEntry type="library" name="SBT: org.scala-lang:scala-reflect:2.10.6:jar" level="project" />
     <orderEntry type="library" name="SBT: org.scalactic:scalactic_2.10:2.2.6:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="SBT: org.scalatest:scalatest_2.10:2.2.6:jar" level="project" />
+    <orderEntry type="library" name="SBT: net.sf.opencsv:opencsv:2.3:jar" level="project" />
   </component>
 </module>

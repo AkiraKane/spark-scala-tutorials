@@ -1,5 +1,4 @@
-package tutorials
-
+package tutorials.scala4basic.collection
 
 /**
   * Created by leeivan on 3/22/16.

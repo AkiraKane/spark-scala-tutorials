@@ -1,4 +1,4 @@
-package tutorials
+package tutorials.scala4basic
 
 import scala.util.matching.Regex
 

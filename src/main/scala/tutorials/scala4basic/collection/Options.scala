@@ -1,4 +1,4 @@
-package tutorials.collection
+package tutorials.scala4basic.collection
 
 /**
   * Created by leeivan on 3/22/16.
@@ -11,6 +11,16 @@ object Options {
       show(capitals.get("Japan")))
     println("show(capitals.get( \"India\")) : " +
       show(capitals.get("India")))
+
+    println("----------------------------------------")
+    val a: Option[Int] = Some(5)
+    val b: Option[Int] = None
+    println("a.getOrElse(0): " + a.getOrElse(0))
+    println("b.getOrElse(10): " + b.getOrElse(10))
+
+    println("----------------------------------------")
+    println("a.isEmpty: " + a.isEmpty )
+    println("b.isEmpty: " + b.isEmpty )
   }
 
   def show(x: Option[String]) = x match {
@@ -18,13 +28,5 @@ object Options {
     case None => "?"
   }
 
-  println("----------------------------------------")
-  val a: Option[Int] = Some(5)
-  val b: Option[Int] = None
-  println("a.getOrElse(0): " + a.getOrElse(0))
-  println("b.getOrElse(10): " + b.getOrElse(10))
 
-  println("----------------------------------------")
-  println("a.isEmpty: " + a.isEmpty )
-  println("b.isEmpty: " + b.isEmpty )
 }

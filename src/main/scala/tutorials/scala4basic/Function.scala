@@ -1,3 +1,5 @@
+package tutorials.scala4basic
+
 import java.util.Date
 
 /**
