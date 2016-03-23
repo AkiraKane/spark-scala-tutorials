@@ -2,9 +2,7 @@ package tutorials.spark4
 
 import org.apache.spark.{SparkContext, Accumulator}
 import org.apache.spark.rdd.RDD
-
 import au.com.bytecode.opencsv.CSVReader
-
 import java.io.StringReader
 
 /**
