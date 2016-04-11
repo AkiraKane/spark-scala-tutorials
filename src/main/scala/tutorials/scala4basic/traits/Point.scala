@@ -1,4 +1,4 @@
-package tutorials.scala4basic.collection
+package tutorials.scala4basic.traits
 
 /**
   * Created by leeivan on 3/22/16.
