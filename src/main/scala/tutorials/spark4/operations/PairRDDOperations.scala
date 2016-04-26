@@ -41,7 +41,7 @@ object PairRDDOperations {
     println("----------------------------------")
     rdd.leftOuterJoin(other).foreach(println)
     println("----------------------------------")
-    rdd.cogroup(other).(println)
+    rdd.cogroup(other).foreach(println)
     println("----------------------------------")
     println("----------------------------------")
   }
