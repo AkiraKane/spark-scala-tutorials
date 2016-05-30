@@ -5,6 +5,7 @@ package tutorials.scala4basic
   */
 object PatternMatching {
   def main(args: Array[String]) {
+    case class Person(name: String, age: Int)
     val alice = new Person("Alice", 25)
     val bob = new Person("Bob", 32)
     val charlie = new Person("Charlie", 32)
@@ -17,33 +18,58 @@ object PatternMatching {
           println("Age: " + age + " year, name: " + name + "?")
       }
     }
-    println("----------------------------------")
-    println(matchTest("two"))
-    println(matchTest("test"))
-    println(matchTest(1))
-  }
+    println("injection and extractor")
+    object IPAddress {
 
-  /**
-    * Matching Using case Classes
-    * The case classes are special classes that are used in pattern matching with case expressions. Syntactically, these
-    * are standard classes with a special modifier: case. Following is a simple pattern matching example using case class:
-    *
-    * @param name
-    * @param age
-    */
-  case class Person(name: String, age: Int)
+      def unapply(ip: String): Option[(String, String, String, String)] = {
+        val tokens = ip split "\\."
+        if (tokens.length == 4 && isValid(tokens)) Some(tokens(0), tokens(1), tokens(2), tokens(3)) else None
+      }
 
-  /**
-    * A pattern match includes a sequence of alternatives, each starting with the keyword case. Each alternative includes
-    * a pattern and one or more expressions, which will be evaluated if the pattern matches. An arrow symbol => separates
-    * the pattern from the expressions. Here is a small example, which shows how to match against an integer value:
-    *
-    * @param x
-    */
-  def matchTest(x: Any): Any = x match {
-    case 1 => "one"
-    case "two" => 2
-    case y: Int => "scala.Int"
-    case _ => "many"
+      private def isValid(tokens: Array[String]): Boolean = {
+        tokens forall { elem =>
+          try {
+            val intValue = elem.toInt
+            intValue >= 0 && intValue <= 255
+          } catch {
+            case _ => false
+          }
+        }
+      }
+    }
+    val IP = "127.0.0.1"
+    val nonIP = "128.-112.ABC."
+    IP match {
+      case IPAddress(_, _, _, a) => println(a)
+      case _ => println("Invalid ip address")
+    }
+    nonIP match {
+      case IPAddress(_, _, _, a) => println(a)
+      case _ => println("Invalid ip address")
+    }
+    println("------------------------------------------")
+    val ips = "192.168.0.1,192.168.0.2,192.168.0.3,192.168.0.4"
+    object IPAddresses {
+      def unapplySeq(ips: String): Option[Seq[String]] = {
+        Some(ips split ",")
+      }
+    }
+    ips match {
+      case IPAddresses(IPAddresses(a, _, _, _), IPAddresses(b, _, _, _), _*) => println(a + " " + b)
+      case _ => println("Invalid IP addresses")
+    }
+
+    class PositiveIntOpt(val n: Int) extends AnyVal {
+      def isEmpty: Boolean =
+        n <= 0
+      def get: Int =
+        n
+    }
+
+    object PositiveInt {
+      def unapply(n: Int): PositiveIntOpt =
+        new PositiveIntOpt(n)
+    }
   }
 }
+

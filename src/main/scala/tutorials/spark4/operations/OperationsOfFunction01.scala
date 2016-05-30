@@ -21,7 +21,7 @@ object OperationsOfFunction01 {
     val result01 = lines.map(line => line + 1)
     val result02 = lines.flatMap(line => line.to(3))
     val result10 = lines.flatMap(line => line.until(3))
-    val result03 = lines.filter(x => x != 1)
+    val result03 = lines.filter(x => x < 2)
     val result04 = lines.distinct()
     val result05 = lines.sample(false, 0.5)
 

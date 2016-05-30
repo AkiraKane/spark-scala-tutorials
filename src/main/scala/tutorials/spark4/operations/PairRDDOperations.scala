@@ -14,9 +14,8 @@ object PairRDDOperations {
     val appName = "Test Spark basic functions of transformations and actions"
     val conf = new SparkConf().setMaster("local").setAppName(appName)
     val sc = new SparkContext(conf)
-    val rdd = sc.parallelize(List(('B',1),('B',2),('A',3),('A',4),('A',5)))
-    val other = sc.parallelize(List(('B', 9)))
-
+    val rdd = sc.parallelize(List(('B', 1), ('B', 2), ('A', 3), ('A', 4), ('A', 5), ('D', 8)))
+    val other = sc.parallelize(('B', 9) ::('A', 10) ::('A', 3) :: Nil)
     val result01 = rdd.reduceByKey((x, y) => x + y)
     val result02 = rdd.groupByKey()
     val result03 = rdd.mapValues(x => x + 1)
@@ -31,6 +30,7 @@ object PairRDDOperations {
     val result12 = rdd.cogroup(other)
     val result13 = rdd.countByKey()
     val result14 = rdd.countByValue()
+    val result15 = rdd.filter { case (key, value) => value < 4 }
 
     println("result01: " + result01.collect.mkString(" "))
     println("result02: " + result02.collect.mkString(" "))
@@ -46,5 +46,17 @@ object PairRDDOperations {
     println("result12: " + result12.collect.mkString(" "))
     println("result13: " + result13.mkString("   "))
     println("result14: " + result14.mkString("   "))
+    println("result15: " + result15.collect.mkString(" "))
+
+    val deptEmployees = List(
+      ("cs", ("jack", 1000.0)),
+      ("cs", ("bron", 1200.0)),
+      ("phy", ("sam", 2200.0)),
+      ("phy", ("ronaldo", 500.0))
+    )
+    val employeeRDD = sc.makeRDD(deptEmployees)
+
+    val maxByDept = employeeRDD.foldByKey(("dummy", 0.0))((acc, element) => if (acc._2 > element._2) acc else element)
+    println("maximum salaries in each dept" + maxByDept.collect().toList)
   }
 }
