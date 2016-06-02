@@ -58,5 +58,27 @@ object PairRDDOperations {
 
     val maxByDept = employeeRDD.foldByKey(("dummy", 0.0))((acc, element) => if (acc._2 > element._2) acc else element)
     println("maximum salaries in each dept" + maxByDept.collect().toList)
+
+    val pairs = sc.makeRDD(List(("holden", "likes coffee"), ("panda", "likes long strings and coffee")))
+    val result16 = pairs.filter { case (key, value) => value.length < 20 }
+    println("result16: " + result16.collect.mkString(" "))
+
+    val rdd01 = sc.parallelize(List(("panda", 0), ("pink", 3), ("pirate", 3), ("panda", 1), ("pink", 4)))
+    val result17 = rdd01.mapValues(x => (x, 1)).reduceByKey((x, y) => (x._1 + y._1, x._2 + y._2))
+    println("result17: " + result17.collect().mkString(" "))
+
+    val result18 = rdd01.map(x => (x._1, (x._2, 1)))
+    val result18_1 = rdd01.map { case (k, v) => (k, (v, 1)) }
+    val result19 = result18.foldByKey((0, 0))((x, y) => (x._1 + y._1, x._2 + y._2))
+    println("result18: " + result18.collect.mkString(" "))
+    println("result18_1: " + result18_1.collect().mkString(" "))
+    println("result19: " + result19.collect.mkString(" "))
+    val result20 = rdd01.combineByKey(
+      (v) => (v, 1),
+      (acc: (Int, Int), v) => (acc._1 + v, acc._2 + 1),
+      (acc1: (Int, Int), acc2: (Int, Int)) => (acc1._1 + acc2._1, acc1._2 + acc2._2))
+    println("result20: " + result20.collect.mkString(" "))
+    val result21 = result20.map { case (key, value) => (key, value._1 / value._2.toFloat) }
+    println("result21: " + result21.collect.mkString(" "))
   }
 }
