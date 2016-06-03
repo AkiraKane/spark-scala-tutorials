@@ -28,6 +28,7 @@ object PairRDDOperations {
     val result10 = rdd.rightOuterJoin(other)
     val result11 = rdd.leftOuterJoin(other)
     val result12 = rdd.cogroup(other)
+    val result12_1 = rdd.groupWith(other)
     val result13 = rdd.countByKey()
     val result14 = rdd.countByValue()
     val result15 = rdd.filter { case (key, value) => value < 4 }
@@ -47,6 +48,7 @@ object PairRDDOperations {
     println("result10: " + result10.collect.mkString(" "))
     println("result11: " + result11.collect.mkString(" "))
     println("result12: " + result12.collect.mkString(" "))
+    println("result12_1: " + result12_1.collect.mkString(" "))
     println("result13: " + result13.mkString("   "))
     println("result14: " + result14.mkString("   "))
     println("result15: " + result15.collect.mkString(" "))
