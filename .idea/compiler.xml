@@ -2,7 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <excludeFromCompile>
-      <file url="file://$PROJECT_DIR$/src/main/scala/tutorials/scala4basic/PatternMatching.scala" />
+      <file url="file://$PROJECT_DIR$/src/main/scala/com/pinecone/tutorials/scala4basic/PatternMatching.scala" />
+      <file url="file://$PROJECT_DIR$/src/main/scala/tutorials/spark4/sql/SparkParquetExample.scala" />
     </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>

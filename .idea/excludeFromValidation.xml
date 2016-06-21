@@ -2,5 +2,6 @@
 <project version="4">
   <component name="ExcludeFromValidation">
     <file url="file://$PROJECT_DIR$/src/main/scala/tutorials/scala4basic/PatternMatching.scala" />
+    <file url="file://$PROJECT_DIR$/src/main/scala/tutorials/spark4/sql/parquet/SparkParquetExample.scala" />
   </component>
 </project>
