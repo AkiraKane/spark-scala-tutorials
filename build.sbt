@@ -35,10 +35,6 @@ dependencyOverrides ++= Set(
   "com.fasterxml.jackson.core" % "jackson-databind" % "2.4.4"
 )
 
-sbtavrohugger.SbtAvrohugger.avroSettings
-(scalaSource in avroConfig) := new java.io.File("src/main/scala")
-
-
 
 
 

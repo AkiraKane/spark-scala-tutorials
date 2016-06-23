@@ -14,7 +14,7 @@ import play.api.libs.json._
 case class Person(name: String, lovesPandas: Boolean)
 
 // Note: must be a top level class
-object BasicParseJsonWithJackson {
+object BasicParseJson {
   Logger.getLogger("org").setLevel(Level.OFF)
   Logger.getLogger("akka").setLevel(Level.OFF)
   System.setProperty("hadoop.home.dir", "C:\\winutils")

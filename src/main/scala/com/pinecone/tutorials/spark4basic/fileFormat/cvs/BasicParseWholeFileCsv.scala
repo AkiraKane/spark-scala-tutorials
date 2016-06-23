@@ -1,7 +1,7 @@
 /**
  * Illustrates a simple map partition to parse CSV data in Scala
  */
-package com.pinecone.tutorials.spark4basic.fileFormat
+package com.pinecone.tutorials.spark4basic.fileFormat.cvs
 
 import java.io.StringReader
 

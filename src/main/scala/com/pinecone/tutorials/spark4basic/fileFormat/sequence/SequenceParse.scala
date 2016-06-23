@@ -11,7 +11,6 @@ object SequenceParse {
   Logger.getLogger("org").setLevel(Level.OFF)
   Logger.getLogger("akka").setLevel(Level.OFF)
   System.setProperty("hadoop.home.dir", "C:\\winutils")
-
   def main(args: Array[String]) {
     val conf = new SparkConf().setMaster("local[3]").setAppName("SequenceParse")
     val sc = new SparkContext(conf)
@@ -23,5 +22,8 @@ object SequenceParse {
     println(rdd02.collect().map(elem => (elem._1 + ", " + elem._2)).toList)
     val rdd03 = sc.sequenceFile(dir + "/part-00000", classOf[Text], classOf[IntWritable]).map { case (x, y) => (x.toString, y.get()) }
     println("rdd3: " + rdd03.collect().mkString(" "))
+    val rdd04 = sc.sequenceFile(dir + "/part-00000", classOf[Text], classOf[IntWritable])
+    println("rdd4: " + rdd04.collect().mkString(" "))
   }
+
 }
