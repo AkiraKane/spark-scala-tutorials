@@ -28,7 +28,7 @@ libraryDependencies ++= Seq("org.apache.spark" % "spark-core_2.10" % "1.6.1",
   "com.hadoop.gplcompression" % "hadoop-lzo" % "0.4.19",
   "com.twitter.elephantbird" % "elephant-bird" % "4.13" pomOnly(),
   "com.datastax.spark" % "spark-cassandra-connector_2.10" % "1.6.0",
-  "org.eclipse.jetty"  % "jetty-client" % "8.1.14.v20131031",
+  "org.eclipse.jetty" % "jetty-client" % "8.1.0.v20120127",
   "org.apache.hbase" % "hbase" % "0.94.6").map(
   _.excludeAll(ExclusionRule(organization = "org.mortbay.jetty")))
 

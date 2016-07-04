@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaSbtSettings">
+    <option name="customVMEnabled" value="true" />
+    <option name="customVMPath" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home" />
     <option name="linkedExternalProjectsSettings">
       <SbtProjectSettings>
         <option name="createEmptyContentRootDirectories" value="true" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="jdk" value="jdk1.8.0_25" />
+        <option name="jdk" value="1.8.25" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
