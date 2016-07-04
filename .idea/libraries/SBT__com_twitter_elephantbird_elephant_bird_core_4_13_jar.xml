@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: com.twitter.elephantbird:elephant-bird-core:4.13:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.twitter.elephantbird/elephant-bird-core/jars/elephant-bird-core-4.13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.twitter.elephantbird/elephant-bird-core/srcs/elephant-bird-core-4.13-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

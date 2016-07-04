@@ -21,8 +21,7 @@ object BasicParseJson {
 
   def main(args: Array[String]) {
     val inputFile = "files/pandainfo.json"
-    val conf = new SparkConf().setMaster("local").setAppName("BasicParseJsonWithJackson")
-    val sc = new SparkContext(conf)
+    val sc = new SparkContext(new SparkConf().setMaster("local").setAppName("BasicParseJsonWithJackson"))
     val input = sc.textFile(inputFile)
 
     // Parse it into a specific case class. We use mapPartitions beacuse:
@@ -58,5 +57,6 @@ object BasicParseJson {
     val result02 = rddParseJson.flatMap(record => personReads.reads(record).asOpt)
     result02.filter(_.lovesPandas).map(Json.toJson(_))
     println("result02" + result02.collect().mkString(" "))
+
   }
 }

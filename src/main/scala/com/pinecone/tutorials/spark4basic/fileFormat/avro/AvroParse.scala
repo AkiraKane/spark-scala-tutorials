@@ -19,6 +19,7 @@ object AvroParse {
     val sc = new SparkContext(conf)
     val path = "files/avro/twitter.avro"
     val avroRDD = sc.hadoopFile[AvroWrapper[GenericRecord], NullWritable, AvroInputFormat[GenericRecord]](path)
+//    println("avroRDD: " + avroRDD.collect().mkString(" "))
     println("avroRDD: " + avroRDD.map(record => new String(record._1.datum.get("username").toString())).first.mkString(" "))
   }
 }

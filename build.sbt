@@ -23,7 +23,13 @@ libraryDependencies ++= Seq("org.apache.spark" % "spark-core_2.10" % "1.6.1",
   "org.apache.spark" % "spark-hive_2.10" % "1.6.1",
   "com.typesafe.play" % "play-json_2.10" % "2.4.6",
   "com.esotericsoftware" % "kryo" % "3.0.3",
-  "org.apache.avro" % "avro-mapred" % "1.8.1").map(
+  "org.apache.avro" % "avro-mapred" % "1.8.1",
+  "com.twitter.elephantbird" % "elephant-bird-core" % "4.13",
+  "com.hadoop.gplcompression" % "hadoop-lzo" % "0.4.19",
+  "com.twitter.elephantbird" % "elephant-bird" % "4.13" pomOnly(),
+  "com.datastax.spark" % "spark-cassandra-connector_2.10" % "1.6.0",
+  "org.eclipse.jetty"  % "jetty-client" % "8.1.14.v20131031",
+  "org.apache.hbase" % "hbase" % "0.94.6").map(
   _.excludeAll(ExclusionRule(organization = "org.mortbay.jetty")))
 
 
@@ -35,7 +41,10 @@ dependencyOverrides ++= Set(
   "com.fasterxml.jackson.core" % "jackson-databind" % "2.4.4"
 )
 
-
+resolvers ++= Seq(
+  "Twitter Maven Repo" at "http://maven.twttr.com/",
+  Resolver.sonatypeRepo("public")
+)
 
 
 

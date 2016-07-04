@@ -26,15 +26,19 @@ object BasicParseCsv {
     }
     val people = result.map(x => Person(x(0), x(1)))
     val pandaLovers = people.filter(person => person.favouriteAnimal == "panda")
-    val result01 = pandaLovers.map(person => List(person.name, person.favouriteAnimal).toArray).mapPartitions { people =>
+    val result01 = pandaLovers.map(person => (person.name, person.favouriteAnimal))
+    println("result01: " + result01.collect().mkString(" "))
+    println("pandaLovers: " + pandaLovers.collect().mkString(" "))
+    println("input: " + input.collect().mkString(" "))
+    val outputPath = "file:///D:/cvsFile-" + System.currentTimeMillis()
+    val result02 = result01.map(person => List(person._1, person._2).toArray)
+    println("result02: " + result02.collect().mkString(" "))
+    result02.mapPartitions { people =>
       val stringWriter = new StringWriter()
       val csvWriter = new CSVWriter(stringWriter)
       csvWriter.writeAll(people.toList)
       Iterator(stringWriter.toString)
-    }
-    println("result01: " + result01.collect().mkString(" "))
-    println("pandaLovers: " + pandaLovers.collect().mkString(" "))
-    println("input: " + input.collect().mkString(" "))
+    }.saveAsTextFile(outputPath)
   }
 
   case class Person(name: String, favouriteAnimal: String)

@@ -1,24 +1,11 @@
 package com.pinecone.tutorials.scala4basic
 
 /**
-  * Created by leeivan on 3/22/16.
+  * Created by ivan on 2016/6/30.
   */
-object PatternMatching {
+object PatterMatching02 {
   def main(args: Array[String]) {
-    case class Person(name: String, age: Int)
-    val alice = new Person("Alice", 25)
-    val bob = new Person("Bob", 32)
-    val charlie = new Person("Charlie", 32)
-
-    for (person <- List(alice, bob, charlie)) {
-      person match {
-        case Person("Alice", 25) => println("Hi Alice!")
-        case Person("Bob", 32) => println("Hi Bob!")
-        case Person(name, age) =>
-          println("Age: " + age + " year, name: " + name + "?")
-      }
-    }
-    println("injection and extractor")
+    println("----------------injection and extractor-----------------------")
     object IPAddress {
 
       def unapply(ip: String): Option[(String, String, String, String)] = {
@@ -32,7 +19,7 @@ object PatternMatching {
             val intValue = elem.toInt
             intValue >= 0 && intValue <= 255
           } catch {
-            case _ : Throwable=> false
+            case _: Throwable => false
           }
         }
       }
@@ -65,4 +52,3 @@ object PatternMatching {
     }
   }
 }
-
